@@ -1,0 +1,11 @@
+fr\oxiane\test\LoginTest.class
+fr\oxiane\test\MainTest.class
+fr\oxiane\test\SuiteTest.class
+fr\oxiane\page\SubjectPage.class
+fr\oxiane\test\SearchTest.class
+fr\oxiane\page\LoginPage.class
+fr\oxiane\util\Browser.class
+fr\oxiane\test\TestRunner.class
+fr\oxiane\page\HomePage.class
+fr\oxiane\util\LoadProperty.class
+fr\oxiane\page\UserPage.class

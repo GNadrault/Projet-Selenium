@@ -1,0 +1,49 @@
+#seleniumhub:
+#  image: selenium/hub
+#  ports:
+#   - "4444:4444"
+#
+#firefox:
+#  image: selenium/node-firefox-debug
+#  environment:
+#    SCREEN_WIDTH: "1600"
+#    SCREEN_HEIGHT: "1200"
+#  ports:
+#    - "5900"
+#  links:
+#    - seleniumhub:hub
+#
+#chrome:
+#  image: selenium/node-chrome-debug
+#  environment:
+#    SCREEN_WIDTH: "1600"
+#    SCREEN_HEIGHT: "1200"
+#  ports:
+#    - "5900"
+#  links:
+#    - seleniumhub:hub
+
+firefoxstandalone:
+  image: selenium/standalone-firefox-debug
+  container_name: firefox
+  environment:
+    SCREEN_WIDTH: "1600"
+    SCREEN_HEIGHT: "1200"
+    TZ: Europe/Paris
+    GRID_BROWSER_TIMEOUT: 180
+  ports:
+    - 4446:4444
+    - 5902:5900
+
+chromestandalone:
+  image: selenium/standalone-chrome-debug
+  container_name: chrome
+  environment:
+    SCREEN_WIDTH: "1600"
+    SCREEN_HEIGHT: "1200"
+    TZ: Europe/Paris
+    GRID_BROWSER_TIMEOUT: 180
+    DBUS_SESSION_BUS_ADRESS: /dev/null
+  ports:
+    - 4445:4444
+    - 5901:5900
