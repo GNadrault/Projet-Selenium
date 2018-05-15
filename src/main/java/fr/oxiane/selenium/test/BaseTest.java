@@ -1,15 +1,14 @@
-package fr.oxiane.test;
+package fr.oxiane.selenium.test;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import fr.oxiane.util.WebDriverConfiguration;
+import fr.oxiane.selenium.util.WebDriverConfiguration;
 import org.apache.log4j.Logger;
 import org.fluentlenium.adapter.junit.FluentTest;
 import org.fluentlenium.configuration.ConfigurationProperties;
 import org.fluentlenium.configuration.FluentConfiguration;
 import org.junit.AssumptionViolatedException;
 import org.junit.Rule;
-import org.junit.rules.ErrorCollector;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;

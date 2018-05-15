@@ -1,4 +1,4 @@
-package fr.oxiane.util;
+package fr.oxiane.selenium.util;
 
 import org.junit.Ignore;
 import org.junit.Test;

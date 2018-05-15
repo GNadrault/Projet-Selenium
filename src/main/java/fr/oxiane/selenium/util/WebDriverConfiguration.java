@@ -1,4 +1,4 @@
-package fr.oxiane.util;
+package fr.oxiane.selenium.util;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;

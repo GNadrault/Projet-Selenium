@@ -1,4 +1,4 @@
-package fr.oxiane.util;
+package fr.oxiane.selenium.util;
 
 public enum Browser {
     CHROME("http://localhost:4445/wd/hub"),

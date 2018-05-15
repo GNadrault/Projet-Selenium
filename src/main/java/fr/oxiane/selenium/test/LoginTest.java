@@ -1,6 +1,6 @@
-package fr.oxiane.test;
+package fr.oxiane.selenium.test;
 
-import fr.oxiane.page.LoginPage;
+import fr.oxiane.selenium.page.LoginPage;
 import org.apache.log4j.Logger;
 import org.fluentlenium.core.annotation.Page;
 import org.fluentlenium.core.hook.wait.Wait;

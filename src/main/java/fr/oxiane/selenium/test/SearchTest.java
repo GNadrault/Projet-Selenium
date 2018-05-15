@@ -1,14 +1,13 @@
-package fr.oxiane.test;
+package fr.oxiane.selenium.test;
 
-import fr.oxiane.page.HomePage;
-import fr.oxiane.page.UserPage;
+import fr.oxiane.selenium.page.HomePage;
+import fr.oxiane.selenium.page.UserPage;
 import org.apache.log4j.Logger;
 import org.fluentlenium.configuration.ConfigurationProperties;
 import org.fluentlenium.configuration.FluentConfiguration;
 import org.fluentlenium.core.annotation.Page;
 import org.fluentlenium.core.hook.wait.Wait;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 @Wait

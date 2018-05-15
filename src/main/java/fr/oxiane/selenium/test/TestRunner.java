@@ -1,6 +1,6 @@
-package fr.oxiane.test;
+package fr.oxiane.selenium.test;
 
-import fr.oxiane.util.LoadProperty;
+import fr.oxiane.selenium.util.LoadProperty;
 import org.apache.log4j.Logger;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;

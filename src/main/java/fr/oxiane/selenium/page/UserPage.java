@@ -1,4 +1,4 @@
-package fr.oxiane.page;
+package fr.oxiane.selenium.page;
 
 import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.domain.FluentWebElement;
