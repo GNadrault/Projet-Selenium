@@ -48,7 +48,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>May 14, 2018 09:31:26 AM</span>
+                    <span class='label suite-start-time blue darken-3'>May 15, 2018 10:09:52 AM</span>
 				</a>
 			</li>
 			<li>
@@ -73,7 +73,8 @@
 					<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li class='divider'></li>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
 			</div>
@@ -133,7 +134,7 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>3</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
 					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
@@ -141,6 +142,20 @@
 			</div>
 		</div>
 		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>3</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
 		
 	</div>
 </div>
@@ -152,17 +167,17 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Test Stack Overflow</span>
-						<span class='test-time'>May 14, 2018 09:31:27 AM</span>
+						<span class='test-time'>May 15, 2018 10:09:52 AM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 14, 2018 09:31:27 AM</span>
-	<span class='label end-time'>May 14, 2018 09:31:27 AM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+	<span class='label start-time'>May 15, 2018 10:09:52 AM</span>
+	<span class='label end-time'>May 15, 2018 10:10:23 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 31s+268ms</span>
 </div>
 	<div class='test-desc'>Test de login fail et de navigation dans les menus </div>
 	<div class='test-attributes'>
@@ -173,6 +188,113 @@
 				<span class='author label white-text'>G.Nadrault</span>
 			</div>
 	</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1  pass' status='pass' test-id='2'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>fr.oxiane.selenium.test.LoginTest</h5>
+						<span class="node-time label grey lighten-1 white-text">May 15, 2018 10:10:08 AM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 8s+663ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-2 leaf pass' status='pass' test-id='3'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>loginFailTest</h5>
+						<span class="node-time label grey lighten-1 white-text">May 15, 2018 10:10:08 AM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 8s+661ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>10:10:08 AM</td>
+													<td class='step-details'>Passed: loginFailTest<img data-featherlight='3.png' width='10%' src='3.png' data-src='3.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-1  pass' status='pass' test-id='4'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>fr.oxiane.selenium.test.SearchTest</h5>
+						<span class="node-time label grey lighten-1 white-text">May 15, 2018 10:10:23 AM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 9s+901ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-2 leaf pass' status='pass' test-id='5'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>rechercheTest</h5>
+						<span class="node-time label grey lighten-1 white-text">May 15, 2018 10:10:18 AM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 4s+718ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>10:10:18 AM</td>
+													<td class='step-details'>Passed: rechercheTest<img data-featherlight='4.png' width='10%' src='4.png' data-src='4.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf pass' status='pass' test-id='6'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>rechercheUserTest</h5>
+						<span class="node-time label grey lighten-1 white-text">May 15, 2018 10:10:23 AM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 5s+163ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>10:10:23 AM</td>
+													<td class='step-details'>Passed: rechercheUserTest<img data-featherlight='5.png' width='10%' src='5.png' data-src='5.png'></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+	</ul>
 					</div>
 				</li>
 			</ul>
@@ -250,7 +372,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>May 14, 2018 09:31:27 AM</td>
+										<td>May 15, 2018 10:09:52 AM</td>
 										<td class='linked' test-id='1'>Test Stack Overflow</td>
 										<td><span class='test-status pass'>pass</span></td>
 									</tr>
@@ -320,7 +442,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>May 14, 2018 09:31:27 AM</td>
+                                                <td>May 15, 2018 10:09:52 AM</td>
                                                 <td class='linked' test-id='1'>Test Stack Overflow</td>
                                                 <td><span class='test-status pass'>pass</span></td>
                                             </tr>
@@ -349,31 +471,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>3</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>0</div>
+					<div class='panel-lead'>3</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>May 14, 2018 09:31:26 AM</div>
+					<div class='panel-lead'>May 15, 2018 10:09:52 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>May 14, 2018 09:31:38 AM</div>
+			 		<div class='panel-lead'>May 15, 2018 10:10:24 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 0m 11s+315ms</div>
+					<div class='panel-lead'>0h 0m 32s+193ms</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -410,7 +532,7 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 1,
+				passParent: 3,
 				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
@@ -418,7 +540,7 @@
 				skipParent: 0,
 				exceptionsParent: 0,
 				
-				passChild: 0,
+				passChild: 3,
 				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
