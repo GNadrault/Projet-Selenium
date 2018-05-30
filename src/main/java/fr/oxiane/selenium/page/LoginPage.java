@@ -1,11 +1,13 @@
 package fr.oxiane.selenium.page;
 
+import fr.oxiane.selenium.util.DescriptionPage;
 import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.annotation.PageUrl;
 import org.fluentlenium.core.domain.FluentWebElement;
 import org.openqa.selenium.support.FindBy;
 
 @PageUrl("https://stackoverflow.com/users/login")
+@DescriptionPage(description = "Page de connexion des utilisateurs", name = "Connexion", image = "connexion.jpg")
 public class LoginPage extends FluentPage {
 
     private static final String URL = "https://stackoverflow.com/users/login";

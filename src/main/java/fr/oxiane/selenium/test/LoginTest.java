@@ -1,6 +1,8 @@
 package fr.oxiane.selenium.test;
 
 import fr.oxiane.selenium.page.LoginPage;
+import fr.oxiane.selenium.util.PageTest;
+
 import org.apache.log4j.Logger;
 import org.fluentlenium.core.annotation.Page;
 import org.fluentlenium.core.hook.wait.Wait;
@@ -21,6 +23,7 @@ public class LoginTest extends BaseTest {
     private static Logger logger = Logger.getLogger(LoginTest.class);
 
     @Test
+    @PageTest(pages = LoginPage.class)
     public void loginFailTest() {
         goTo(loginPage);
         LoginPage.getLoginText().write(USERNAME_FAIL);

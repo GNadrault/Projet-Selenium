@@ -25,9 +25,7 @@
         <docker.url>localhost</docker.url>
         <browser.name>local</browser.name>
     </properties>
-    <build>
-        <finalName>ProjetSelenium</finalName>
-    </build>
+    
     <dependencies>
         <dependency>
             <groupId>org.fluentlenium</groupId>
@@ -92,5 +90,13 @@
             </properties>
         </profile>
     </profiles>
-
+    <build>
+        <finalName>ProjetSelenium</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

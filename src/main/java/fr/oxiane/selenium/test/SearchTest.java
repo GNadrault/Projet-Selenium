@@ -1,7 +1,10 @@
 package fr.oxiane.selenium.test;
 
 import fr.oxiane.selenium.page.HomePage;
+import fr.oxiane.selenium.page.LoginPage;
 import fr.oxiane.selenium.page.UserPage;
+import fr.oxiane.selenium.util.PageTest;
+
 import org.apache.log4j.Logger;
 import org.fluentlenium.configuration.ConfigurationProperties;
 import org.fluentlenium.configuration.FluentConfiguration;
@@ -11,7 +14,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 @Wait
-@FluentConfiguration(driverLifecycle = ConfigurationProperties.DriverLifecycle.CLASS)
 public class SearchTest extends BaseTest {
 
     private static final String RECHERCHE = "spring";
@@ -24,6 +26,7 @@ public class SearchTest extends BaseTest {
     private UserPage userPage;
 
     @Test
+    @PageTest(pages = HomePage.class)
     public void rechercheTest(){
         goTo(homePage);
         homePage.getSearchBar().write("spring");
@@ -32,6 +35,7 @@ public class SearchTest extends BaseTest {
     }
 
     @Test
+    @PageTest(pages = {HomePage.class, UserPage.class})
     public void rechercheUserTest(){
         goTo(homePage);
         homePage.getUserOnglet().click();

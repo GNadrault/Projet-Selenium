@@ -2,6 +2,7 @@ package fr.oxiane.selenium.test;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
+
 import fr.oxiane.selenium.util.WebDriverConfiguration;
 import org.apache.log4j.Logger;
 import org.fluentlenium.adapter.junit.FluentTest;
@@ -19,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-@FluentConfiguration(driverLifecycle = ConfigurationProperties.DriverLifecycle.CLASS)
+@FluentConfiguration(driverLifecycle = ConfigurationProperties.DriverLifecycle.METHOD)
 public class BaseTest extends FluentTest{
 
     protected static int nbLog = 0;
@@ -92,7 +93,7 @@ public class BaseTest extends FluentTest{
     }
 
     public static int countNbScreenShot(){
-        File f = new File("src/main/resources/rapport/");
+        File f = new File(SuiteTest.getPathToReport()+"/");
         nbLog = 0;
         for (File file : f.listFiles()) {
             if ((file.isFile())&&(file.getName().endsWith(".png"))) {
@@ -104,6 +105,6 @@ public class BaseTest extends FluentTest{
 
     public void takeScreenShotTest(){
 
-        this.takeScreenShot(SuiteTest.getPathName()+(countNbScreenShot()+".png"));
+        this.takeScreenShot(SuiteTest.getPathToReport()+"/"+(countNbScreenShot()+".png"));
     }
 }

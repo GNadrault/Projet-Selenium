@@ -1,11 +1,14 @@
 package fr.oxiane.selenium.page;
 
+import fr.oxiane.selenium.util.DescriptionPage;
 import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.annotation.PageUrl;
 import org.fluentlenium.core.domain.FluentWebElement;
+import org.junit.Test;
 import org.openqa.selenium.support.FindBy;
 
 @PageUrl("https://stackoverflow.com/")
+@DescriptionPage(description = "La page d'accueil du site StackOverflow", name = "Accueil", image = "accueil.jpg")
 public class HomePage extends FluentPage {
 
     private final static String URL = "https://stackoverflow.com/";

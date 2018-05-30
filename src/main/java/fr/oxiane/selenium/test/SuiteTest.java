@@ -3,6 +3,10 @@ package fr.oxiane.selenium.test;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+import java.net.URL;
+import java.nio.file.Path;
+
 import org.apache.log4j.Logger;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -10,7 +14,6 @@ import org.junit.runners.MethodSorters;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @Suite.SuiteClasses({LoginTest.class, SearchTest.class})
 public class SuiteTest{
 
@@ -18,17 +21,18 @@ public class SuiteTest{
     private static ExtentHtmlReporter htmlReporter;
     private static ExtentTest loggerReport;
     private static Logger loggerConsole = Logger.getLogger(SuiteTest.class);
-    private static final String PATH_NAME = "src\\main\\resources\\rapport\\";
+    private static String PathToReport;
+    private static final String PathToHTML = "/rapport.html";
 
     /**
      * Démarrage du rapport de tests
      */
     @BeforeClass
     public static void startingReport(){
-        loggerConsole.info("Chemin du rapport: "+ PATH_NAME);
-        htmlReporter = new ExtentHtmlReporter(PATH_NAME +"rapport.html");
-        report = new ExtentReports();
-        report.attachReporter(htmlReporter);
+        PathToReport = Thread.currentThread().getContextClassLoader().getResource("static/rapport").getPath();
+        loggerConsole.info("Chemin du rapport: "+ PathToReport + PathToHTML);
+        htmlReporter = new ExtentHtmlReporter(PathToReport+PathToHTML);
+        report = new ExtentReports();        report.attachReporter(htmlReporter);
         loggerReport = report.createTest("Test Stack Overflow", "Test de login fail et de navigation dans les menus");
         loggerReport.assignCategory("Selenium");
         loggerReport.assignAuthor("G. Nadrault");
@@ -39,7 +43,9 @@ public class SuiteTest{
      */
     @AfterClass
     public static void endingReport() {
+        loggerConsole.info("Ecriture dans le rapport: " + PathToReport + PathToHTML);
         report.flush();
+        loggerConsole.info("Fin du rapport");
     }
 
     public static ExtentReports getReport() {
@@ -66,15 +72,23 @@ public class SuiteTest{
         SuiteTest.loggerReport = loggerReport;
     }
 
-    public static String getPathName() {
-        return PATH_NAME;
-    }
-
     public static Logger getLoggerConsole() {
         return loggerConsole;
     }
 
     public static void setLoggerConsole(Logger loggerConsole) {
         SuiteTest.loggerConsole = loggerConsole;
+    }
+
+    public static String getPathToReport() {
+        return PathToReport;
+    }
+
+    public static void setPathToReport(String pathToReport) {
+        PathToReport = pathToReport;
+    }
+
+    public static String getPathToHTML() {
+        return PathToHTML;
     }
 }

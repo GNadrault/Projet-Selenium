@@ -1,5 +1,6 @@
 package fr.oxiane.selenium.util;
 
+import fr.oxiane.dto.MethodeDeTest;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.reflections.Reflections;
@@ -21,6 +22,7 @@ public class LoadProperty {
     private static final String SELENIUM_TESTS = "selenium.properties";
     private static final String PARAMETER_TESTS = "tests";
     private static final String PARAMETER_IGNORE = "ignore";
+    private static final String PACKAGE_SCAN = "fr.oxiane.selenium.test";
 
     public void updateListMethodsTest(){
         MethodeDeTest methodeDeTest = getListeMethode();
@@ -28,22 +30,22 @@ public class LoadProperty {
         writeIntoPropertyFile(methodeDeTest);
     }
 
-    public MethodeDeTest formaterListeMethodes(MethodeDeTest methodeDeTest){
+    private MethodeDeTest formaterListeMethodes(MethodeDeTest methodeDeTest){
         for(Method method:methodeDeTest.getMethodTestable()){
-            methodeDeTest.getMethodATester().append(method.getName()).append(";");
+            methodeDeTest.getNameMethodATester().append(method.getName()).append(";");
         }
         for (Method method:methodeDeTest.getMethodIgnore()) {
-            methodeDeTest.getMethodAIgnorer().append(method.getName()).append(";");
+            methodeDeTest.getNameMethodAIgnorer().append(method.getName()).append(";");
         }
         return methodeDeTest;
     }
 
-    public MethodeDeTest getListeMethode(){
+    public static MethodeDeTest getListeMethode(){
         MethodeDeTest methodeDeTest = new MethodeDeTest();
         List<Method> listeMethodeTestable = new ArrayList<>();
         List<Method> listeMethodeIgnore = new ArrayList<>();
         Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setUrls(ClasspathHelper.forPackage("fr.oxiane.test"))
+                .setUrls(ClasspathHelper.forPackage(PACKAGE_SCAN))
                 .setScanners(new MethodAnnotationsScanner()));
         Set<Method> listeMethodeAnnotatedTest = reflections.getMethodsAnnotatedWith(Test.class);
         for (Method method: listeMethodeAnnotatedTest) {
@@ -64,8 +66,8 @@ public class LoadProperty {
                 .getContextClassLoader()
                 .getResource(SELENIUM_TESTS).getPath();
         try (OutputStream outputStream = new FileOutputStream(pathToProperties)) {
-            props.setProperty(PARAMETER_TESTS, methodeDeTest.getMethodATester().toString());
-            props.setProperty(PARAMETER_IGNORE, methodeDeTest.getMethodAIgnorer().toString());
+            props.setProperty(PARAMETER_TESTS, methodeDeTest.getNameMethodATester().toString());
+            props.setProperty(PARAMETER_IGNORE, methodeDeTest.getNameMethodAIgnorer().toString());
             props.store(outputStream, "Liste des méthodes de tests");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
