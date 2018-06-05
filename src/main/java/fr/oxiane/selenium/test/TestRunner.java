@@ -1,6 +1,8 @@
 package fr.oxiane.selenium.test;
 
+import fr.oxiane.selenium.util.Browser;
 import fr.oxiane.selenium.util.LoadProperty;
+import fr.oxiane.selenium.util.WebDriverConfiguration;
 import fr.oxiane.service.PageService;
 
 import java.lang.reflect.Method;
@@ -18,11 +20,12 @@ public class TestRunner {
     private static String pathToProperties;
     private static Logger loggerConsole = Logger.getLogger(TestRunner.class);
 
-    public static void LaunchTest(List<Method> methods){
+    public static void launchTest(List<Method> methods, String navigateur){
         LoadProperty loadProperty = new LoadProperty();
         loadProperty.updateListMethodsTest();
         JUnitCore junitRunner = new JUnitCore();
         SuiteTest.startingReport();
+        updateBrowser(navigateur);
         for (Method method : methods) {
 			Request request = Request.method(method.getDeclaringClass(), method.getName());
 			Result result = junitRunner.run(request);
@@ -30,4 +33,10 @@ public class TestRunner {
 		}
 		SuiteTest.endingReport();
     }
+
+    public static void updateBrowser(String navigateur){
+        Browser browser = Browser.fromString(navigateur);
+        WebDriverConfiguration.setBROWSER(browser);
+    }
 }
+

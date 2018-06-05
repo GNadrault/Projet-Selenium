@@ -1,8 +1,7 @@
 package fr.oxiane.service;
 
-import fr.oxiane.dto.MethodeDeTest;
-import fr.oxiane.dto.Page;
-import fr.oxiane.dto.TestPage;
+import fr.oxiane.dto.*;
+import fr.oxiane.selenium.test.SuiteTest;
 import fr.oxiane.selenium.test.TestRunner;
 import fr.oxiane.selenium.util.DescriptionPage;
 import fr.oxiane.selenium.util.LoadProperty;
@@ -13,16 +12,14 @@ import org.reflections.Reflections;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class PageService {
 
 	private static final String PACKAGE_NAME = "fr.oxiane.selenium.page";
 	private static List<Method> methods;
+	private static final String PATH_TO_FILE ="http://localhost:8181/rapport/";
 
 	public List<Page> getAllPages() {
 		List<Page> pages = new ArrayList<>();
@@ -33,6 +30,7 @@ public class PageService {
 			mettreAJourPage(page, classPage);
 			pages.add(page);
 		}
+		pages.sort(Comparator.comparing(Page::getName));
 		return pages;
 	}
 
@@ -50,14 +48,14 @@ public class PageService {
 
 	private void mettreAJourPage(Page page, Class classPage) {
 		DescriptionPage descriptionPage = (DescriptionPage) classPage.getAnnotation(DescriptionPage.class);
-		page.setTestsPage(searchMethodsTestPage(classPage));
+		page.setPageName(classPage.getName());
 		page.setDescription(descriptionPage.description());
 		page.setName(descriptionPage.name());
 		page.setImage(descriptionPage.image());
-		page.setPageName(classPage.getName());
+		page.setTestsPage(searchMethodsTestPage(page, classPage));
 	}
 
-	private List<TestPage> searchMethodsTestPage(Class classPage) {
+	private List<TestPage> searchMethodsTestPage(Page page, Class classPage) {
 		MethodeDeTest methodesATester = LoadProperty.getListeMethode();
 		List<TestPage> methods = new ArrayList<>();
 		for (Method method : methodesATester.getMethodTestable()) {
@@ -66,6 +64,8 @@ public class PageService {
 				if (Arrays.asList(pageTest.pages()).contains(classPage)) {
 					TestPage testPage = new TestPage();
 					testPage.setName(method.getName());
+					testPage.setClasse(method.getDeclaringClass().getName());
+					testPage.setPageName(page.getName());
 					methods.add(testPage);
 				}
 			}
@@ -73,29 +73,27 @@ public class PageService {
 		return methods;
 	}
 
-	public List<Page> testAllPageTest(List<Page> pages) {
-		getMethodsToTest(pages);
-		TestRunner.LaunchTest(methods);
-		return pages;
+	public Rapport testAllPageTest(InfoTest infoTest) {
+		getMethodsTest(infoTest.getTests());
+		TestRunner.launchTest(methods, infoTest.getNavigateur());
+		Rapport rapport = new Rapport();
+		rapport.setChemin(PATH_TO_FILE+SuiteTest.getFilePath().toString());
+		return rapport;
 	}
-	
-	private List<Method> getMethodsToTest(List<Page> pages) {
-		MethodeDeTest methodesATester = LoadProperty.getListeMethode();
+
+	private List<Method> getMethodsTest(List<TestPage> testPages){
 		methods = new ArrayList<>();
-		for (Method method : methodesATester.getMethodTestable()) {
-			if (method.isAnnotationPresent(PageTest.class)) {
-				PageTest pageTest = method.getAnnotation(PageTest.class);
-				for (Page page : pages) {
-					Class classPage = getClassByName(page.getPageName());
-					if (Arrays.asList(pageTest.pages()).contains(classPage) && !methods.contains(method)) {
-						methods.add(method);
-					}
-				}
+		for (TestPage testPage: testPages) {
+			try {
+				Class<?> c = getClassByName(testPage.getClasse());
+				Method method = c.getDeclaredMethod(testPage.getName());
+				methods.add(method);
+			}  catch (NoSuchMethodException e) {
+				e.printStackTrace();
 			}
 		}
 		return methods;
 	}
-
 
 	private Class getClassByName(String className) {
 		Class classPage = null;
@@ -113,5 +111,13 @@ public class PageService {
 
 	public static void setMethods(List<Method> methods) {
 		PageService.methods = methods;
+	}
+
+	public static String getPackageName() {
+		return PACKAGE_NAME;
+	}
+
+	public static String getPathToFile() {
+		return PATH_TO_FILE;
 	}
 }

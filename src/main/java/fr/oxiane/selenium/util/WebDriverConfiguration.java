@@ -17,7 +17,7 @@ public class WebDriverConfiguration {
     private static Logger loggerConsole = Logger.getLogger(WebDriverConfiguration.class);
     private static WebDriver driver;
     private static DesiredCapabilities capabilities;
-    private static final Browser BROWSER = Browser.LOCAL;
+    private static Browser BROWSER = Browser.CHROME;
     private static final Dimension DIMENSION = new Dimension(1600,1200);
 
     public static WebDriver webDriverConfiguration(){
@@ -86,6 +86,10 @@ public class WebDriverConfiguration {
 
     public static Browser getBROWSER() {
         return BROWSER;
+    }
+
+    public static void setBROWSER(Browser BROWSER) {
+        WebDriverConfiguration.BROWSER = BROWSER;
     }
 
     public static Dimension getDIMENSION() {

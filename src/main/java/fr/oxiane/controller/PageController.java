@@ -1,7 +1,10 @@
 package fr.oxiane.controller;
 
+import fr.oxiane.dto.InfoTest;
 import fr.oxiane.dto.Page;
+import fr.oxiane.dto.Rapport;
 import fr.oxiane.dto.TestPage;
+import fr.oxiane.selenium.test.SuiteTest;
 import fr.oxiane.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +31,7 @@ public class PageController {
     }
     
     @PostMapping("/pages")
-    public List<Page> testerPages(@RequestBody ArrayList<Page> pages){
-        System.out.println("J'AI RECU L'ORDRE DE LANCER LES TESTS");
-        return pageService.testAllPageTest(pages);
+    public Rapport testerPages(@RequestBody InfoTest infoTest){
+        return pageService.testAllPageTest(infoTest);
     }
 }
