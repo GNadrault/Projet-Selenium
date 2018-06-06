@@ -27,7 +27,7 @@ public class SuiteTest{
     /**
      * Démarrage du rapport de tests
      */
-    @BeforeClass
+    //@BeforeClass
     public static void startingReport(){
         pathToReport = Thread.currentThread().getContextClassLoader().getResource("static/rapport").getPath();
         LocalDateTime now = LocalDateTime.now();
@@ -46,7 +46,7 @@ public class SuiteTest{
     /**
      * Fin du rapport de tests
      */
-    @AfterClass
+    //@AfterClass
     public static void endingReport() {
         loggerConsole.info("Ecriture dans le rapport: " + pathToReport + "/" + filePath);
         report.flush();

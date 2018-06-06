@@ -10,5 +10,10 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+        stage('Integration Test') {
+            steps {
+                bat 'mvn clean verify -P integration'
+            }
+        }
     }
 }
