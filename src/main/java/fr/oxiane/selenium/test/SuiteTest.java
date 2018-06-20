@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,8 +28,9 @@ public class SuiteTest{
     /**
      * Démarrage du rapport de tests
      */
-    //@BeforeClass
+    @BeforeClass
     public static void startingReport(){
+        loggerConsole.info("lancement des tests");
         pathToReport = Thread.currentThread().getContextClassLoader().getResource("static/rapport").getPath();
         LocalDateTime now = LocalDateTime.now();
         String dateFormatted = now.format(formatter);
@@ -46,7 +48,7 @@ public class SuiteTest{
     /**
      * Fin du rapport de tests
      */
-    //@AfterClass
+    @AfterClass
     public static void endingReport() {
         loggerConsole.info("Ecriture dans le rapport: " + pathToReport + "/" + filePath);
         report.flush();

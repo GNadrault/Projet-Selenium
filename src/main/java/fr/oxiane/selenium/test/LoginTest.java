@@ -22,15 +22,4 @@ public class LoginTest extends BaseTest {
     private static final String MESSAGE_LOGIN_FAIL = "The email or password is incorrect.";
     private static Logger logger = Logger.getLogger(LoginTest.class);
 
-    @Test
-    @PageTest(pages = LoginPage.class)
-    public void loginFailTest() {
-        goTo(loginPage);
-        LoginPage.getLoginText().write(USERNAME_FAIL);
-        LoginPage.getPasswordText().write(PASSWORD_FAIL);
-        LoginPage.getLoginBtn().click();
-        await().explicitlyFor(5, TimeUnit.SECONDS).until(LoginPage.getErrorMessage()).displayed();
-        Assert.assertTrue("Error message is not displayed", LoginPage.getErrorMessage().displayed());
-        Assert.assertTrue("Error message is not correct", LoginPage.getErrorMessage().text().contains(MESSAGE_LOGIN_FAIL));
-    }
 }

@@ -31,11 +31,9 @@ firefoxstandalone:
     SCREEN_HEIGHT: "1200"
     TZ: Europe/Paris
     GRID_BROWSER_TIMEOUT: 180
-    NOVNC: "true"
   ports:
     - 4446:4444
     - 5902:5900
-    - 6082:6080
 
 chromestandalone:
   image: selenium/standalone-chrome-debug
@@ -46,8 +44,6 @@ chromestandalone:
     TZ: Europe/Paris
     GRID_BROWSER_TIMEOUT: 180
     DBUS_SESSION_BUS_ADRESS: /dev/null
-    NOVNC: "true"
   ports:
     - 4445:4444
     - 5901:5900
-    - 6081:6080
